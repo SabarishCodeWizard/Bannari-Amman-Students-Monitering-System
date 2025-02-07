@@ -264,14 +264,15 @@
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({ email: user.email })
+                        body: JSON.stringify({ username: user.email })
                     })
                         .then(response => response.json())
                         .then(data => {
-                            if (data.message === "Token generated") {
+                            if (data.status === "success") {
                                 window.location.href = "/";
                             }
                         })
+
                         .catch(error => {
                             console.error('Error during email sign-in:', error);
                             userInfo.innerHTML = `Error: ${error.message}`;
